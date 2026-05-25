@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>직장인A — 설치 안내</title>
+  <meta name="description" content="월배당 ETF 투자 자동화 계산기 & 체크리스트. iOS · Android 설치 가이드." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <header>
+    <h1>직장인A</h1>
+    <p class="subtitle">월배당 ETF 투자 설계 — 계산기 · 시뮬레이션 · 체크리스트</p>
+  </header>
+
+  <section class="card">
+    <h2>📱 설치하기</h2>
+    <p>두 가지 방식을 지원합니다. 사용 중인 디바이스에 맞춰 선택하세요.</p>
+
+    <div class="platforms">
+      <article class="platform" id="ios">
+        <h3><span class="badge">iOS</span> Safari 홈 화면 추가</h3>
+        <ol>
+          <li>Safari 에서 <code>https://<span class="host">jikjangin-a.example.com</span></code> 접속</li>
+          <li>하단 공유 버튼 <span class="key">⤴︎</span> 탭</li>
+          <li>스크롤 → <strong>홈 화면에 추가</strong></li>
+          <li>이름 확인 후 추가 → 홈 화면 아이콘으로 실행</li>
+        </ol>
+        <p class="note">iOS는 App Store 외 사이드로드를 허용하지 않습니다. PWA (Progressive Web App) 방식이 표준입니다.</p>
+      </article>
+
+      <article class="platform" id="android">
+        <h3><span class="badge">Android</span> 설치 옵션 두 가지</h3>
+
+        <h4>옵션 A — Chrome PWA 설치 (권장)</h4>
+        <ol>
+          <li>Chrome 에서 <code>https://<span class="host">jikjangin-a.example.com</span></code> 접속</li>
+          <li>주소창 우측 <strong>설치 아이콘</strong> 또는 메뉴 → "앱 설치" 탭</li>
+          <li>홈 화면 아이콘으로 실행</li>
+        </ol>
+
+        <h4>옵션 B — APK 사이드로드 (TWA)</h4>
+        <ol>
+          <li>설정 → 보안 → "출처를 알 수 없는 앱" 또는 브라우저별 권한 허용</li>
+          <li><a class="cta" id="apk-link" href="#" rel="noopener">최신 APK 다운로드</a></li>
+          <li>다운로드된 <code>.apk</code> 파일 탭 → 설치</li>
+        </ol>
+        <p class="note">APK 는 Chrome 의 TWA(Trusted Web Activity) 래핑으로, 사실상 Chrome PWA 와 동일하지만 별도 앱 아이콘으로 보입니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🔗 빠른 링크</h2>
+    <ul class="links">
+      <li><a id="webapp-link" href="#">웹 앱 바로가기</a></li>
+      <li><a id="release-link" href="#" rel="noopener">GitHub Releases (최신 APK)</a></li>
+      <li><a href="./qr.html" rel="noopener">설치 QR 코드</a></li>
+    </ul>
+  </section>
+
+  <section class="card warn">
+    <h2>⚠ 면책</h2>
+    <p>본 서비스는 <strong>투자 자문 / 투자 일임이 아닙니다.</strong> 모든 종목·금액·시점 결정과 책임은 사용자 본인에게 있습니다. 자동 주문 실행 기능은 제공하지 않습니다.</p>
+  </section>
+
+  <footer>
+    <p>Private project — JSungMin · <span id="rev"></span></p>
+  </footer>
+
+  <script>
+    // Single source of truth for production host — edit before deploy.
+    const HOST = window.JIKJANGIN_HOST || "jikjangin-a.example.com";
+    const RELEASES = window.JIKJANGIN_RELEASES || "https://github.com/JSungMin/jikjangin-a-releases/releases";
+    const APK_DOWNLOAD = window.JIKJANGIN_APK || "https://github.com/JSungMin/jikjangin-a-releases/releases/latest/download/app-release-signed.apk";
+
+    document.querySelectorAll(".host").forEach((el) => { el.textContent = HOST; });
+    const webapp = document.getElementById("webapp-link");
+    webapp.href = "https://" + HOST + "/";
+    webapp.textContent = "https://" + HOST + "/";
+
+    document.getElementById("release-link").href = RELEASES;
+    document.getElementById("apk-link").href = APK_DOWNLOAD;
+
+    const ua = navigator.userAgent;
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      document.getElementById("ios").classList.add("highlight");
+    } else if (/Android/i.test(ua)) {
+      document.getElementById("android").classList.add("highlight");
+    }
+  </script>
+</body>
+</html>
