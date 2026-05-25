@@ -26,7 +26,7 @@ Apple 정책상 사이드로드가 불가능합니다. Safari 로 운영 사이�
 
 ## 🔗 자세한 설치 안내
 
-[설치 안내 페이지](https://jsungmin.github.io/jikjangin-a/) — iOS · Android 단계별 가이드 + QR 코드.
+[설치 안내 페이지](https://jsungmin.github.io/jikjangin-a-releases/) — iOS · Android 단계별 가이드 + QR 코드.
 
 ## 🛡 면책 / Legal
 
